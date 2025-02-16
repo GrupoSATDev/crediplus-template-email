@@ -23,7 +23,7 @@
 
         .header {
             width: 100%;
-            background-color: black;
+            background-color: #155ee9;
             padding: 15px;
             display: flex;
             align-items: center;
@@ -100,22 +100,24 @@
 <body>
 
     <div class="header">
-        <span class="logo">IT49</span>
+        <span class="logo">Crédiplus</span>
     </div>
 
     <div class="container">
         <div class="icon">👤</div>
-        <div class="title">Communication Preferences</div>
+        <div class="title">Preferencias de comunicación</div>
         <div class="description">
-            If you no longer wish to receive any communications from HERE, please enter your information below.
+            Si ya no desea recibir ninguna comunicación de AQUÍ, ingrese su información a continuación.
         </div>
 
         <div class="unsubscribe-box">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" placeholder="Enter your email">
-            <button>Unsubscribe</button>
+            <input type="email" id="correo" placeholder="Enter your email">
+            <button id="unsubscribeBtn">Cancelar notifiaciones</button>
         </div>
     </div>
+
+    <script src="index.js"></script>
 
 </body>
 </html>
