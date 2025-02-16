@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const emailInput = document.getElementById("correo");
+    const correoInput = document.getElementById("correo");
     const unsubscribeBtn = document.getElementById("unsubscribeBtn");
-    const messageBox = document.getElementById("responseMessage");
+    const mainContainer = document.getElementById("mainContainer");
+    const successContainer = document.getElementById("successContainer");
 
     unsubscribeBtn.addEventListener("click", function () {
-        unsubscribe();
+        cancelarNotificacion();
     });
 
-    function unsubscribe() {
-        const correo = emailInput.value.trim();
+    function cancelarNotificacion() {
+        const correo = correoInput.value.trim();
 
         if (!correo) {
-            showMessage("Please enter a valid email.", "error");
+            alert("Por favor, ingrese un correo válido.");
             return;
         }
 
@@ -24,20 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                showMessage("You have been unsubscribed successfully.", "success");
+            if (data.statusCode === 201) {
+                mostrarMensajeExito();
             } else {
-                showMessage("Error: " + (data.message || "Something went wrong."), "error");
+                alert("Error: " + (data.message || "Algo salió mal."));
             }
         })
         .catch(error => {
-            showMessage("Network error. Please try again later.", "error");
+            alert("Error de red. Inténtelo nuevamente más tarde.");
         });
     }
 
-    function showMessage(message, type) {
-        messageBox.textContent = message;
-        messageBox.className = "message " + type;
-        messageBox.style.display = "block";
+    function mostrarMensajeExito() {
+        mainContainer.classList.add("hidden"); // Ocultar la vista principal
+        successContainer.classList.remove("hidden"); // Mostrar la tarjeta de éxito
     }
 });

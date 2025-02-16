@@ -22,11 +22,18 @@
         }
 
         .header {
+            position: fixed; /* Fija el header en la parte superior */
+            top: 0;
+            left: 0;
             width: 100%;
             background-color: #155ee9;
-            padding: 15px;
-            display: flex;
-            align-items: center;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -95,6 +102,20 @@
         .unsubscribe-box button:hover {
             background-color: #1b2845;
         }
+
+        .success-card {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -103,7 +124,7 @@
         <span class="logo">Crédiplus</span>
     </div>
 
-    <div class="container">
+    <div id="mainContainer" class="container">
         <div class="icon">👤</div>
         <div class="title">Preferencias de comunicación</div>
         <div class="description">
@@ -111,12 +132,18 @@
         </div>
 
         <div class="unsubscribe-box">
-            <label for="email">E-mail:</label>
-            <input type="email" id="correo" placeholder="Enter your email">
-            <button id="unsubscribeBtn">Cancelar notifiaciones</button>
+            <label for="correo">E-mail:</label>
+            <input type="email" id="correo" placeholder="Ingrese su correo">
+            <button id="unsubscribeBtn">Cancelar notificaciones</button>
         </div>
     </div>
 
+    <div id="successContainer" class="hidden">
+        <div class="success-card">
+            <h2>✅ Notificación cancelada</h2>
+            <p>Tu solicitud ha sido procesada con éxito.</p>
+        </div>
+    </div>
     <script src="index.js"></script>
 
 </body>
