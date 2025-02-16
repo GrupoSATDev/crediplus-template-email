@@ -4,40 +4,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainContainer = document.getElementById("mainContainer");
     const successContainer = document.getElementById("successContainer");
 
-    unsubscribeBtn.addEventListener("click", function () {
-        cancelarNotificacion();
+    // Inicialmente el botón debe estar deshabilitado
+    unsubscribeBtn.disabled = true;
+
+    // Función para habilitar el botón después de resolver el captcha
+    grecaptcha.enterprise.ready(async () => {
+        try {
+            const token = await grecaptcha.enterprise.execute('6Le53dgqAAAAAMNq3INjmB-rjCg60_c_eeo6DCDF', { action: 'unsubscribe' });
+            if (token) {
+                unsubscribeBtn.disabled = false; // Habilitar el botón solo si se obtiene un token válido
+            }
+        } catch (error) {
+            console.error("Error obteniendo el token de reCAPTCHA:", error);
+        }
     });
 
-    function cancelarNotificacion() {
-        const correo = correoInput.value.trim();
+    unsubscribeBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        await cancelarNotificacion();
+    });
 
-        if (!correo) {
-            alert("Por favor, ingrese un correo válido.");
-            return;
-        }
-
-        fetch("https://api.crediplus.com.co/api/CorreoExcluidos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ correo })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.statusCode === 201) {
-                mostrarMensajeExito();
-            } else {
-                alert("Error: " + (data.message || "Algo salió mal."));
+    grecaptcha.enterprise.ready(async () => {
+        try {
+            const token = await grecaptcha.enterprise.execute('6Le53dgqAAAAAMNq3INjmB-rjCg60_c_eeo6DCDF', { action: 'unsubscribe' });
+            if (token) {
+                unsubscribeBtn.disabled = false; // Habilitar el botón solo si se obtiene un token válido
             }
-        })
-        .catch(error => {
-            alert("Error de red. Inténtelo nuevamente más tarde.");
-        });
-    }
+        } catch (error) {
+            console.error("Error obteniendo el token de reCAPTCHA:", error);
+        }
+    });
 
-    function mostrarMensajeExito() {
-        mainContainer.classList.add("hidden"); // Ocultar la vista principal
-        successContainer.classList.remove("hidden"); // Mostrar la tarjeta de éxito
-    }
+    unsubscribeBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        await cancelarNotificacion();
+    });
 });
