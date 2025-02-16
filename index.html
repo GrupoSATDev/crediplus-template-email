@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Preferences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            width: 100%;
+            background-color: black;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .unsubscribe-box {
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .unsubscribe-box input {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .unsubscribe-box button {
+            background-color: #2d3e66;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .unsubscribe-box button:hover {
+            background-color: #1b2845;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="logo">IT49</span>
+    </div>
+
+    <div class="container">
+        <div class="icon">👤</div>
+        <div class="title">Communication Preferences</div>
+        <div class="description">
+            If you no longer wish to receive any communications from HERE, please enter your information below.
+        </div>
+
+        <div class="unsubscribe-box">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <button>Unsubscribe</button>
+        </div>
+    </div>
+
+</body>
+</html>
